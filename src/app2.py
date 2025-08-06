@@ -5,6 +5,8 @@ from chainlit.input_widget import Select
 
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts.chat import MessagesPlaceholder
+from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langchain.schema import StrOutputParser
 from langchain.schema.runnable.config import RunnableConfig
 
@@ -115,6 +117,7 @@ async def on_chat_start():
 
     # Store settings in session for later use
     cl.user_session.set("chat_settings", settings)
+    cl.user_session.set("chat_messages", [])  # Initialize chat history
 
     # Create the model and runnable chain
     await create_runnable(api_key, selected_model, temperature, reasoning_level, chat_profile)
@@ -201,10 +204,10 @@ async def create_runnable(api_key, selected_model, temperature, reasoning_level,
 
     system_prompt = base_prompt + trading_context
 
-
-    # Build prompt template
+    # Build prompt template with MessagesPlaceholder for chat history
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
+        MessagesPlaceholder("history", optional=True, n_messages=20),
         ("human", "{question}")
     ])
 
@@ -237,16 +240,26 @@ async def on_message(message: cl.Message):
             await cl.Message(content=welcome_msg).send()
         cl.user_session.set("first_message", False)
 
+    # Get chat history and convert to format expected by MessagesPlaceholder
+    history_view = cl.user_session.get("chat_messages", [])
+    history_list = [(m["type"], m["content"]) for m in history_view[-20:]]
+
     response_msg = cl.Message(content="")
 
     try:
         async for chunk in runnable.astream(
-            {"question": message.content},
+            {"history": history_list, "question": message.content},
             config=RunnableConfig(callbacks=[cl.LangchainCallbackHandler()])
         ):
             await response_msg.stream_token(chunk)
 
         await response_msg.send()
+
+        # Save the new conversation turn to chat history
+        chat_history = cl.user_session.get("chat_messages", [])
+        chat_history.append({"type": "human", "content": message.content})
+        chat_history.append({"type": "ai", "content": response_msg.content})
+        cl.user_session.set("chat_messages", chat_history)
 
     except Exception as e:
         await cl.Message(
@@ -304,6 +317,9 @@ async def on_chat_resume(thread):
         selected_model = metadata.get("model", selected_model)
         temperature = float(metadata.get("temperature", temperature))
         reasoning_level = metadata.get("reasoning_level", reasoning_level)
+    
+    # Initialize chat history for resumed session
+    cl.user_session.set("chat_messages", [])
     
     # Recreate the runnable chain
     await create_runnable(api_key, selected_model, temperature, reasoning_level, chat_profile)

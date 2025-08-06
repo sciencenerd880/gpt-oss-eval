@@ -84,7 +84,7 @@ pip install groq python-dotenv
 #### Interactive Web UI (Recommended)
 
 ```bash
-uv run chainlit run src/app.py
+uv run chainlit run src/app2.py
 ```
 
 This starts a **clean, simple web interface** at `http://localhost:8000` powered by LangChain and Groq:
