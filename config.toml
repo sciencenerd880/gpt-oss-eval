@@ -1,0 +1,27 @@
+[project]
+enable_telemetry = true
+user_env = []
+session_timeout = 3600
+cache = false
+allow_origins = ["*"]
+
+[features]
+prompt_playground = true
+unsafe_allow_html = false
+latex = false
+multi_modal = true
+
+[UI]
+name = "GPT OSS Explorer"
+description = "Explore Open Source GPT Models via Chainlit + Groq"
+show_readme_as_default = true
+default_collapse_content = true
+default_expand_messages = false
+hide_cot = false
+
+# ✅ Use JPEG for logo
+app_logo_path = "/groq.jpeg"
+favicon_path = "/groq.jpeg"
+
+[meta]
+generated_by = "1.0.0"

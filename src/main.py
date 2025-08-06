@@ -10,11 +10,10 @@ def test_gpt_oss_basic():
     # initialize groq client with api key from environment
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     
-    print("Testing OpenAI GPT OSS 20B model via Groq API")
-    print("=" * 50)
+    print("testing openai gpt oss 20b model via groq api")
     
     try:
-        # test basic completion with standard parameters
+        # test basic completion with standard parameters for consistent evaluation
         completion = client.chat.completions.create(
             model="openai/gpt-oss-20b",
             messages=[
@@ -32,15 +31,13 @@ def test_gpt_oss_basic():
         )
         
         response = completion.choices[0].message.content
-        print("GPT OSS Response:")
-        print("-" * 30)
+        print("response:")
         print(response)
-        print("-" * 30)
         
         return response
         
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"error: {e}")
         return None
 
 
@@ -50,11 +47,10 @@ def test_gpt_oss_streaming():
     
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     
-    print("\nTesting streaming response")
-    print("=" * 50)
+    print("testing streaming response")
     
     try:
-        # test streaming with creative prompt and higher temperature
+        # test streaming with creative prompt and higher temperature for variety
         completion = client.chat.completions.create(
             model="openai/gpt-oss-20b",
             messages=[
@@ -71,8 +67,7 @@ def test_gpt_oss_streaming():
             stop=None
         )
         
-        print("Streaming Response:")
-        print("-" * 30)
+        print("streaming response:")
         
         full_response = ""
         for chunk in completion:
@@ -81,11 +76,11 @@ def test_gpt_oss_streaming():
                 print(content, end="", flush=True)
                 full_response += content
                 
-        print("\n" + "-" * 30)
+        print("\n")
         return full_response
         
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"error: {e}")
         return None
 
 
@@ -95,15 +90,13 @@ def test_gpt_oss_reasoning():
     
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     
-    print("\nTesting reasoning capabilities")
-    print("=" * 50)
+    print("testing reasoning capabilities")
     
     # test different reasoning levels to compare output quality
     reasoning_levels = ["low", "medium", "high"]
     
     for level in reasoning_levels:
-        print(f"\nTesting with reasoning_effort='{level}':")
-        print("-" * 30)
+        print(f"testing reasoning_effort='{level}':")
         
         try:
             completion = client.chat.completions.create(
@@ -123,10 +116,10 @@ def test_gpt_oss_reasoning():
             )
             
             response = completion.choices[0].message.content
-            print(f"Response: {response}")
+            print(f"response: {response}")
             
         except Exception as e:
-            print(f"Error with {level} reasoning: {e}")
+            print(f"error with {level} reasoning: {e}")
 
 
 def test_conversation():
@@ -135,10 +128,9 @@ def test_conversation():
     
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     
-    print("\nTesting multi-turn conversation")
-    print("=" * 50)
+    print("testing multi-turn conversation")
     
-    # multi-turn conversation to test context handling
+    # multi-turn conversation to test context handling and coherence
     messages = [
         {
             "role": "user",
@@ -155,7 +147,7 @@ def test_conversation():
     ]
     
     try:
-        # test conversation with streaming to see real-time response
+        # test conversation with streaming to see real-time response development
         completion = client.chat.completions.create(
             model="openai/gpt-oss-20b",
             messages=messages,
@@ -167,31 +159,29 @@ def test_conversation():
             stop=None
         )
         
-        print("Conversation Response:")
-        print("-" * 30)
+        print("conversation response:")
         
         for chunk in completion:
             if chunk.choices[0].delta.content:
                 print(chunk.choices[0].delta.content, end="", flush=True)
                 
-        print("\n" + "-" * 30)
+        print("\n")
         
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"error: {e}")
 
 
 def main():
     """run all gpt oss model tests"""
-    print("GPT OSS Model Testing Suite")
-    print("=" * 50)
+    print("gpt oss model testing suite")
     
-    # run comprehensive tests to evaluate model capabilities
+    # run comprehensive tests to evaluate model capabilities across different scenarios
     # test_gpt_oss_basic()          # basic response test
     test_gpt_oss_streaming()      # streaming functionality
     # test_gpt_oss_reasoning()      # reasoning at different levels
     # test_conversation()           # multi-turn conversation
     
-    print("\nAll tests completed")
+    print("all tests completed")
 
 
 if __name__ == "__main__":

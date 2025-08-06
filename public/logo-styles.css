@@ -1,0 +1,15 @@
+/* Force logo to display larger */
+.chainlit-logo img {
+    width: 400px !important;
+    height: auto !important;
+    max-width: none !important;
+}
+
+/* Alternative selector in case the above doesn't work */
+[data-testid="logo"] img,
+.logo img,
+img[src*="paperwork.svg"] {
+    width: 400px !important;
+    height: auto !important;
+    max-width: none !important;
+}
