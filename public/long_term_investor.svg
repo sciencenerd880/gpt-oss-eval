@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <linearGradient id="investorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2196F3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3F51B5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Tree representing growth over time -->
+  <path d="M12 21V3" stroke="url(#investorGradient)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="12" cy="7" r="3" fill="none" stroke="url(#investorGradient)" stroke-width="1.5"/>
+  <circle cx="12" cy="7" r="5" fill="none" stroke="url(#investorGradient)" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Dollar signs for wealth building -->
+  <text x="8" y="8" font-family="Arial" font-size="3" fill="url(#investorGradient)" font-weight="bold">$</text>
+  <text x="14.5" y="8" font-family="Arial" font-size="3" fill="url(#investorGradient)" font-weight="bold">$</text>
+  
+  <!-- Roots/foundation -->
+  <path d="M10 21c-2-2-4-3-6-2M14 21c2-2 4-3 6-2" stroke="url(#investorGradient)" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

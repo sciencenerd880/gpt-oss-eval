@@ -14,6 +14,10 @@ cache = false
 # Authorized origins
 allow_origins = ["*"]
 
+# Enable chat history and thread management
+enable_telemetry = true
+database_connection_string = "sqlite+aiosqlite:///./chainlit.db"
+
 [features]
 # Process and display HTML in messages. This can be a security risk (see https://stackoverflow.com/questions/19603097/why-is-it-dangerous-to-render-user-generated-html-or-javascript)
 unsafe_allow_html = false
@@ -83,7 +87,7 @@ cot = "full"
 alert_style = "classic"
 
 # Load assistant logo directly from URL.
-logo_file_url = "public/paperwork.svg"
+logo_file_url = "public/trademuse_logo_dark.svg"
 
 # Specify optional one or more custom links in the header.
 # [[UI.header_links]]

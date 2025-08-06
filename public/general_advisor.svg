@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <linearGradient id="generalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#607D8B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#78909C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#90A4AE;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Central hub/compass representing versatility -->
+  <circle cx="12" cy="12" r="8" fill="none" stroke="url(#generalGradient)" stroke-width="2"/>
+  
+  <!-- Four directional points showing multi-faceted approach -->
+  <path d="M12 4l2 6-2 2-2-6z" fill="url(#generalGradient)"/>
+  <path d="M20 12l-6 2-2-2 6-2z" fill="url(#generalGradient)"/>
+  <path d="M12 20l-2-6 2-2 2 6z" fill="url(#generalGradient)"/>
+  <path d="M4 12l6-2 2 2-6 2z" fill="url(#generalGradient)"/>
+  
+  <!-- Center point -->
+  <circle cx="12" cy="12" r="2" fill="url(#generalGradient)"/>
+  
+  <!-- Small indicators for different trading aspects -->
+  <circle cx="12" cy="6" r="1" fill="url(#generalGradient)" opacity="0.7"/>
+  <circle cx="18" cy="12" r="1" fill="url(#generalGradient)" opacity="0.7"/>
+  <circle cx="12" cy="18" r="1" fill="url(#generalGradient)" opacity="0.7"/>
+  <circle cx="6" cy="12" r="1" fill="url(#generalGradient)" opacity="0.7"/>
+</svg>

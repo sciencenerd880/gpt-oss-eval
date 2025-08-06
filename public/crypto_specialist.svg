@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <linearGradient id="cryptoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9C27B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E91E63;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Bitcoin-style coin -->
+  <circle cx="12" cy="12" r="9" fill="none" stroke="url(#cryptoGradient)" stroke-width="2"/>
+  
+  <!-- Stylized "B" for blockchain/Bitcoin -->
+  <path d="M8 7h4c1.5 0 2.5 1 2.5 2.5S13.5 12 12 12h2c1.5 0 2.5 1 2.5 2.5S15.5 17 14 17H8V7z" fill="none" stroke="url(#cryptoGradient)" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M8 12h6" stroke="url(#cryptoGradient)" stroke-width="1.5"/>
+  
+  <!-- Blockchain network dots -->
+  <circle cx="5" cy="5" r="1" fill="url(#cryptoGradient)"/>
+  <circle cx="19" cy="5" r="1" fill="url(#cryptoGradient)"/>
+  <circle cx="5" cy="19" r="1" fill="url(#cryptoGradient)"/>
+  <circle cx="19" cy="19" r="1" fill="url(#cryptoGradient)"/>
+  
+  <!-- Connection lines -->
+  <path d="M5 5l14 14M19 5L5 19" stroke="url(#cryptoGradient)" stroke-width="0.5" opacity="0.6"/>
+</svg>

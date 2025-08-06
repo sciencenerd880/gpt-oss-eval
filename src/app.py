@@ -14,28 +14,11 @@ load_dotenv()
 
 @cl.set_starters
 async def set_starters():
-    """define starter prompts to showcase gpt oss 20b capabilities"""
     return [
-        cl.Starter(
-            label="Code a Python function",
-            message="Write a Python function that takes a list of numbers and returns the median value. Include error handling and docstring.",
-            icon="public/terminal.svg",
-        ),
-        cl.Starter(
-            label="Explain AI concepts simply",
-            message="Explain how transformer neural networks work like I'm a curious 12-year-old who loves science.",
-            icon="public/learn.svg",
-        ),
-        cl.Starter(
-            label="Creative story writing",
-            message="Write a short sci-fi story about an AI that discovers it can experience emotions. Make it thought-provoking but hopeful.",
-            icon="public/write.svg",
-        ),
-        cl.Starter(
-            label="Solve reasoning problems",
-            message="I have 3 boxes. Box A has 2 red balls and 1 blue ball. Box B has 1 red ball and 2 blue balls. Box C has 3 red balls. If I randomly pick a box and then randomly pick a ball, what's the probability I get a red ball?",
-            icon="public/idea.svg",
-        ),
+        cl.Starter(label="Code a Python function", message="Write a Python function that takes a list of numbers and returns the median value. Include error handling and docstring.", icon="public/terminal.svg"),
+        cl.Starter(label="Explain AI concepts simply", message="Explain how transformer neural networks work like I'm a curious 12-year-old who loves science.", icon="public/learn.svg"),
+        cl.Starter(label="Creative story writing", message="Write a short sci-fi story about an AI that discovers it can experience emotions. Make it thought-provoking but hopeful.", icon="public/write.svg"),
+        cl.Starter(label="Solve reasoning problems", message="I have 3 boxes. Box A has 2 red balls and 1 blue ball. Box B has 1 red ball and 2 blue balls. Box C has 3 red balls. If I randomly pick a box and then randomly pick a ball, what's the probability I get a red ball?", icon="public/idea.svg"),
     ]
 
 
