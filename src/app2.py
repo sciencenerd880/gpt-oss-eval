@@ -289,6 +289,11 @@ async def on_settings_update(settings):
     # Create new runnable with updated settings
     await create_runnable(api_key, selected_model, temperature, reasoning_level, chat_profile)
     
+    # Update the stored welcome message with new model info
+    profile_emoji = {"general_chat": "💬", "day_trader": "⚡", "swing_trader": "📈", "long_term_investor": "💎", "crypto_specialist": "₿"}.get(chat_profile, "🤖")
+    updated_welcome_msg = f"{profile_emoji} **TradeMuse {chat_profile.replace('_', ' ').title() if chat_profile else 'Assistant'}** initialized with **{SUPPORTED_MODELS[selected_model]}** (temp: {temperature}, reasoning: {reasoning_level})"
+    cl.user_session.set("welcome_message", updated_welcome_msg)
+    
     # Notify user of the change
     await cl.Message(
         content=f"🔄 Settings updated! Now using **{SUPPORTED_MODELS[selected_model]}** (temp: {temperature}, reasoning: {reasoning_level})"

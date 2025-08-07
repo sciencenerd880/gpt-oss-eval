@@ -11,6 +11,9 @@ dependencies = [
     "langchain>=0.1.0",
     "langchain-groq>=0.1.0",
     "langchain-core>=0.1.0",
+    "langchain-tavily>=0.1.0",
+    "ddgs>=9.0.0",
+    "langgraph>=0.2.0",
     "pillow>=11.3.0",
 ]
 
